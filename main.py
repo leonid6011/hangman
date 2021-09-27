@@ -133,11 +133,13 @@ def word_input():
 
 
 def play(word_main):
-    print('Давайте играть в угадайку слов!')
-    tries = 6  # количество попыток
-    word_completion = '_' * len(word_main)  # строка, содержащая символы _ на каждую букву задуманного слова
+
     guessed_letters = []  # список уже названных букв
     guessed_words = []  # список уже названных слов
+    word_completion = '_' * len(word_main)  # строка, содержащая символы _ на каждую букву задуманного слова
+    tries = 6  # количество попыток
+
+    print('Давайте играть в угадайку слов!')
     while tries >= 0:
         print(display_hangman(tries))
         if tries == 0:
@@ -173,5 +175,10 @@ def play(word_main):
                 tries -= 1
 
 
-word_search = get_word()
-play(word_search)
+again = 'д'
+
+while again.lower() == 'д':
+    word_search = get_word()
+    play(word_search)
+    print('Хотите сыграть ещё раз? Нажмите: д (Да) / н (Нет)')
+    again = input()
